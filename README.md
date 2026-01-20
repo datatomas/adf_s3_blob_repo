@@ -18,7 +18,7 @@ This repository contains an example Azure Data Factory (ADF) project that builds
 - Permissions to assign Storage Blob Data roles to ADF managed identity
 
 ## Repository contents
-- `main.bicep` Azure Storage infrastructure template
+- `storage.bicep` Azure Storage infrastructure template
 - ADF pipeline and Data Flow design notes (follow the steps in the tutorial)
 
 ## Notes
