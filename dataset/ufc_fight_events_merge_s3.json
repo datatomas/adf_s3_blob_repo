@@ -1,0 +1,25 @@
+{
+	"name": "ufc_fight_events_merge_s3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_fightprophet_s3_dev_01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "s3-fightprophet-dev-01",
+				"folderPath": "ufc_transformed",
+				"fileName": "ufc_fight_events_merged.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

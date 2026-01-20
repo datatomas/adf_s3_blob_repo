@@ -1,0 +1,12 @@
+{
+	"name": "AzureDataLakeStorageFightProphet",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "ufc/ mma connection  for data storage",
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://stfightprophetetldev01.dfs.core.windows.net/"
+		}
+	}
+}

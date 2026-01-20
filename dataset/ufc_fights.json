@@ -1,0 +1,113 @@
+{
+	"name": "ufc_fights",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageFightProphet",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ufc_fights.csv",
+				"fileSystem": "ufc"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fighter_id",
+				"type": "String"
+			},
+			{
+				"name": "result",
+				"type": "String"
+			},
+			{
+				"name": "opponent",
+				"type": "String"
+			},
+			{
+				"name": "opponent_url",
+				"type": "String"
+			},
+			{
+				"name": "event_url",
+				"type": "String"
+			},
+			{
+				"name": "kd_for",
+				"type": "String"
+			},
+			{
+				"name": "kd_against",
+				"type": "String"
+			},
+			{
+				"name": "str_for",
+				"type": "String"
+			},
+			{
+				"name": "str_against",
+				"type": "String"
+			},
+			{
+				"name": "td_for",
+				"type": "String"
+			},
+			{
+				"name": "td_against",
+				"type": "String"
+			},
+			{
+				"name": "sub_for",
+				"type": "String"
+			},
+			{
+				"name": "sub_against",
+				"type": "String"
+			},
+			{
+				"name": "event",
+				"type": "String"
+			},
+			{
+				"name": "method",
+				"type": "String"
+			},
+			{
+				"name": "round",
+				"type": "String"
+			},
+			{
+				"name": "time",
+				"type": "String"
+			},
+			{
+				"name": "first_name",
+				"type": "String"
+			},
+			{
+				"name": "last_name",
+				"type": "String"
+			},
+			{
+				"name": "weight_class",
+				"type": "String"
+			},
+			{
+				"name": "is_title_fight",
+				"type": "String"
+			},
+			{
+				"name": "bonus_tags",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

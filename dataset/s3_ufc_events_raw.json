@@ -1,0 +1,53 @@
+{
+	"name": "s3_ufc_events_raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_fightprophet_s3_dev_01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "s3-fightprophet-dev-01",
+				"folderPath": "ufc_events"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "event_id",
+				"type": "String"
+			},
+			{
+				"name": "event_name",
+				"type": "String"
+			},
+			{
+				"name": "event_date",
+				"type": "String"
+			},
+			{
+				"name": "location",
+				"type": "String"
+			},
+			{
+				"name": "event_url",
+				"type": "String"
+			},
+			{
+				"name": "event_status",
+				"type": "String"
+			},
+			{
+				"name": "scraped_at",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

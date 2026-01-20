@@ -1,0 +1,101 @@
+{
+	"name": "df_ufc_fight_events",
+	"properties": {
+		"description": "left join event dates into fights",
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ufc_fights",
+						"type": "DatasetReference"
+					},
+					"name": "dfufcfights"
+				},
+				{
+					"dataset": {
+						"referenceName": "ufc_events",
+						"type": "DatasetReference"
+					},
+					"name": "dfufcevents"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ufc_fight_events_merge_s3",
+						"type": "DatasetReference"
+					},
+					"name": "ufcfighteventsmerged"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "join1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          fighter_id as string,",
+				"          result as string,",
+				"          opponent as string,",
+				"          opponent_url as string,",
+				"          event_url as string,",
+				"          kd_for as string,",
+				"          kd_against as string,",
+				"          str_for as string,",
+				"          str_against as string,",
+				"          td_for as string,",
+				"          td_against as string,",
+				"          sub_for as string,",
+				"          sub_against as string,",
+				"          event as string,",
+				"          method as string,",
+				"          round as string,",
+				"          time as string,",
+				"          first_name as string,",
+				"          last_name as string,",
+				"          weight_class as string,",
+				"          is_title_fight as string,",
+				"          bonus_tags as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> dfufcfights",
+				"source(output(",
+				"          event_id as string,",
+				"          event_name as string,",
+				"          event_date as date 'MM/dd/yyyy',",
+				"          location as string,",
+				"          event_url as string,",
+				"          event_status as string,",
+				"          scraped_at as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> dfufcevents",
+				"dfufcevents select(mapColumn(",
+				"          event_date,",
+				"          location,",
+				"          event_url,",
+				"          event_name,",
+				"          event_id",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"dfufcfights, select1 join(dfufcfights@event_url == select1@event_url,",
+				"     joinType:'left',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> ufcfighteventsmerged"
+			]
+		}
+	}
+}

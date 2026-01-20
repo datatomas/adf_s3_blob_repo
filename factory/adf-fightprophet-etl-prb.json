@@ -1,0 +1,9 @@
+{
+	"name": "adf-fightprophet-etl-prb",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d2cf11f9-bf99-447c-80ba-6aa3a34cff84",
+		"tenantId": "42660066-b65c-4809-838e-26fb4e61c325"
+	}
+}
